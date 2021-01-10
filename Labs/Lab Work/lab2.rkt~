@@ -1,0 +1,140 @@
+#lang sicp
+(#%require simply-scheme)
+(define (buzz n)
+  (cond ((= (remainder n 7) 0) 'buzz)
+        (else n)))
+
+;(define (f a b)
+; (+ (g a) b))
+
+;(define (g a)
+;  (* 3 a))
+
+(define (make-adder num)
+  (lambda (x) (+ x num)))
+
+(define (try f)
+  (f 3 5))
+
+(define (square x)
+  (* x x))
+
+(define sq (lambda (x) (* x x)))
+
+(define (foo num) (* num 2))
+
+(define (bar fn) (lambda (num) (fn (+ num 2))))
+
+(define (baz fn) (lambda (num) (+ (fn num) 2)))
+
+(define (argue s)
+  (if (empty? s)
+      '()
+      (se (opposite (first s))
+          (argue (bf s)))))
+
+(define (opposite w)
+  (cond ((equal? w 'like) 'hate)
+        ((equal? w 'hate) 'like)
+        ((equal? w 'wonderful) 'terrible)
+        ((equal? w 'terrible) 'wonderful)
+        ((equal? w 'great) 'awful)
+        ((equal? w 'awful) 'great)
+        ((equal? w 'terrific) 'yucky)
+        ((equal? w 'yucky) 'terrific)
+        (else w) ))
+
+(define (substitue s old new)
+  (if (empty? s)
+      '()
+      (se (remove (first s) old new)
+          (substitue (bf s) old new))))
+
+(define (remove wd old new)
+  (cond ((equal? wd old) new)
+        (else wd)))
+
+(define (g) (lambda (num) (+ num 2)))
+
+;(define f 'f)
+;f
+
+;(define (f) 'f)
+;(f)
+
+;(define (f num) num)
+;(f 3)
+
+;(define (f)
+;  (lambda () 'f))
+;((f))
+
+;(define (f)
+;  (lambda ()
+;    (lambda (num)
+;      num)))
+; (((f)) 3)
+
+(define (1+ num)
+  (+ num 1))
+
+(define (t f)
+  (lambda (x) (f (f (f x)))))
+
+;((t 1+) 0)
+;3
+
+;((t (t 1+)) 0)
+;9
+
+;(((t t) 1+) 0)
+;27
+
+(((t t) 1+) 0)
+(((lambda (x) (t (t (t x)))) 1+) 0)
+((t (t (t 1+))) 0)
+((t (t (lambda (x) (1+ (1+ (1+ x)))))) 0)
+((t (lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x)))))
+    0)
+((lambda (x)
+   ((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x))))
+              ((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x))))
+               ((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x)))) x))))
+ 0)
+((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x))))
+              ((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x))))
+               ((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x)))) 0)))
+((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x))))
+              ((lambda (x)
+      ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) x))))
+               ((lambda (x) (1+ (1+ (1+ x))))
+       ((lambda (x) (1+ (1+ (1+ x))))
+        ((lambda (x) (1+ (1+ (1+ x)))) 0)))))
+
+
